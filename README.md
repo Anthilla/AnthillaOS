@@ -25,32 +25,32 @@ kpartx -a /dev/nbdX
 blkid #looks /dev/mapper/nbdXp3 -> BootExt
 mount LABEL=BootExt /mountpoint -o rw,noatime,discard
 
-### the content of: aos_DATE_vhd001.qed
+the content of: aos_DATE_vhd001.qed
 
 - System Image in: System/aos_DATE_System.squashfs.xz - Readonly OS img
 - Kernel in: Kernel directory
 - Looks and Make Attention (!!!) to the Partition layout, and BootExt Volume Structure.
 - DIRS directory it's made to contain your images and directories to Overmount to default one or new one.
   Please maintain the Syntax: DIR_path + extension (!!!) for example:
-  ### example 1: DIR_lib64_firmware.squashfs.xz -mount on-> /lib64/firmware (part of kernel pkg in Kernel directory, on BootEx)
-  ### example 2: DIR_etc_ssh -mount on-> /etc/ssh
+  example 1: DIR_lib64_firmware.squashfs.xz -mount on-> /lib64/firmware (part of kernel pkg in Kernel directory, on BootEx)
+  example 2: DIR_etc_ssh -mount on-> /etc/ssh
 
   DIR_ can be the prefix for directories(compressed or uncompressed) and FILE_ for single files always in DIRS directory on BootExt
 
-  ### Why is important to maintain this syntax? because we are working to automate it!
+  Why is important to maintain this syntax? because we are working to automate it!
 
 
-### WHEN YOU HAVE an booted VM with AnthillaOS,
+- WHEN YOU HAVE an booted VM with AnthillaOS,
 you can remount as Read/Write the System Repository, 
 (BootExt it's the "Boot Volume" and the "System Repository" mounted in /mnt/cdrom due to default genkernel-* standard)
 simply launching: mount /mnt/cdrom -o remount,rw,discard,noatime
 
-### Default automated mountpoints by genkernel-next:
+- Default automated mountpoints by genkernel-next:
 /mnt/cdrom: BootExt Volume: ("Boot Volume" and the "System Repository")
 /mnt/livecd: BootExt:/System/aos_DATE_System.squashfs.xz
 /mnt/overlay: Aufs auto overlay (it's a tmpfs aka ramdisk that permit to "change" as read/write image the running system, all changes not voluntary stored on /mnt/cdrom (mounted in rw) or other Partitions o Disks are lost on reboot.
 
-### You can store on the BootExt volume(formatted in ext4 as default) what you need and your experiments in BootExt (/mnt/cdrom) structure.
+- You can store on the BootExt volume(formatted in ext4 as default) what you need and your experiments in BootExt (/mnt/cdrom) structure.
 
 Apps -> Repository for your Apps wrote in Php, Mono, Go, or any kind of present language/processor available 
 DIRS -> Repository for Custom DIRS and FILES
