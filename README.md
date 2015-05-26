@@ -11,43 +11,42 @@ AnthillaOS can be used to build structured and/or destructured Clusters in HA an
 Introduction
 ------------
 
-Anthilla OS aims to be a complete linux system image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real singlof any "System" (System in general sense),
+Anthilla OS aims to be a complete Linux System image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real singlof any "System" (System in general sense),
 the drift towards chaos. 
 
-This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal linux system, as custom linux embedded system *readonly* as possible, separing configurations, and Data leaving System image untouched.
+This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
 
-custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
+Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
 
-System Image, Kernel package, firmwares, Data, and configurations, are separed. like an Android system on a smartphone. But is a pure linux, Based on Gentoo, rebuilded.
+System Image, Kernel package, firmwares, Data, and configurations, are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded.
 
-a note. Please, share with us use cases, and configuration, to tune and make AnthillaOS more powerfull and clean.
+A note: please, share with us use cases, and configuration, to tune and make AnthillaOS more powerful and clean.
 
 Thanks for attention and Enjoy.
 
 [Anthilla](http://www.anthilla.com) Team
 
-
 Description
 -----------
 
-Usable test/dev exercise for appliances,.the drift towards chaos. 
+Usable test/dev exercise for appliances, the drift towards chaos. 
 
-This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal linux system, as custom linux embedded system *readonly* as possible, separing configurations, and Data leaving System image untouched.
+This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
 
-custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
+Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
 
-System Image, Kernel package, firmwares, Data, and configurations, are separed. like an Android system on a smartphone. But is a pure linux, Based on Gentoo, rebuilded.
+System Image, Kernel package, firmwares, Data, and configurations, are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded.
 
 
-An x86 64bit gentoo image customized for readonly usage as appliances, fully functional and complete of <1000 pkg smashing down a gentoo distro.
+An x86 64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of <1000 pkg smashing down a Gentoo distro.
 
 Available as VM Image .qed (qemu, xen, kvm, virtualbox), .vmdk (vmware), .vdi (virtualbox) it is ready to be used as vm or to be dumped to and usb key:
 
-- Download it. 
-- Configure the aos_DATE_vhd001.* as first virtual hard disk of a vm.
-- Boot it.
-- Log In: user: root, password: root.
-- Access also from network, dhcp on eth0 and sshd are enabled by deafult.
+- download it; 
+- configure the aos_DATE_vhd001.* as first virtual hard disk of a vm;
+- boot it;
+- log In with user = root and password = root;
+- access also from network, dhcp on eth0 and sshd are enabled by deafult.
 
 If you want mount or look into without booting, take an image file, you can mount QED it with qemu-nbd command.
 
@@ -103,50 +102,50 @@ mount /mnt/cdrom -o remount,rw,discard,noatime
 - ```grub``` : The home of Grub2! here is the ```grub.cfg```, simplified.
 - ```livecd``` : important empty file to permit the genkernel generated kernel to find the volume to boot
 
-### All open source components from other projects are released under respective licenses, all parts, files,subprojects developed as part or this project are released under the BSD 3 clause license.
+### All Open Source components from other projects are released under respective licenses, all parts, files, subprojects developed as part or this project are released under the BSD 3 clause license.
 
 ## Features
 
-  - Squash xz compressed (so read only) booting image
+  - Squash xz compressed (so read only) booting image;
   - Build to run with [Antd](www.anthilla.com/en/projects/antd/) [Antd on Github](https://github.com/Anthilla/Antd) 
-  - [ZFS](http://zfsonlinux.org/) a part of [OpenZFS project](http://open-zfs.org/wiki/Main_Page)
-  - Samba [Samba Gentoo ebuild](https://packages.gentoo.org/package/net-fs/samba) (REMOVED, Due instability and problem to automate the build of official and overlay pkg for both 4.1.x and 4.2.x) Dockerize or Lxc It!
-  - Linux Kernel 4.0.0 aufs from gentoo sources with powerfull configuration (most builtin)
+  - [ZFS](http://zfsonlinux.org/) a part of [OpenZFS project](http://open-zfs.org/wiki/Main_Page);
+  - Samba [Samba Gentoo ebuild](https://packages.gentoo.org/package/net-fs/samba) (REMOVED! Due instability and problem to automate the build of official and overlay pkg for both 4.1.x and 4.2.x), Dockerize or Lxc It;
+  - Linux Kernel 4.0.0 aufs from gentoo sources with powerful configuration (most builtin);
   - [Systemd](http://www.freedesktop.org/wiki/Software/systemd/) with minimal set of services, plus a set of custom runlevel that permits to load external defined services during boot (from git master) with a lot of features including:
-      - Systemd internal container system
-      - and machinectl to control containers and virtualization through libvirt.
-      - Some useful links to virtualize and playing with Systemd containers 
-      - [\#1](http://0pointer.net/blog/systemd-for-administrators-part-xxi.html)
-      - [\#2](https://www.variantweb.net/blog/systemd-machinectl-vs-docker/)
-      - [\#3](http://seanmcgary.com/posts/run-docker-containers-with-systemd-nspawn)
-      - [\#4](http://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
-      - [\#5](https://coreos.com/docs/launching-containers/launching/getting-started-with-systemd/)
-      - [\#6](https://fedoraproject.org/wiki/Features/SystemdLightweightContainers/)
-      - [\#7](https://lwn.net/Articles/572957/)
-      - [\#8](http://manpages.ubuntu.com/manpages/utopic/man1/machinectl.1.html)
-  - [Docker](https://www.docker.com/) 
-  - [HAProxy](http://www.haproxy.org/)
-  - [Teamd](https://github.com/jpirko/libteam/tree/master/teamd) with some howtos, [\#1](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Configure_teamd_Runners.html) [\#2](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Controlling_teamd_with_teamdctl.html)  
-  - [KVM, Qemu](http://wiki.qemu.org/Main_Page)
-  - [Libvirt](http://libvirt.org/) 
-  - [Gluster]http://www.gluster.org/) 
-  - [LXC](https://linuxcontainers.org/)
-  - CoreOS [etcd]() & [fleet]()
-  - A lot of high availability and semplified deploying method included and working out of the box.
-  - Fully rebuilded and coherent linux system
-  - <1000 pkg installed, System size: 2.8Gb Uncompressed, compressed 647mb.
-  - Grub2 with a simplyfied maintenance
-  - Innovative and particular tools included, Filesystems, networking
-  - Latest releases or git versions.
-  - zram and tmpfs usage..
-  - php5.6 and Mono 4.2 included (ready to be an appliance)
-  - Fully 64bit System
-  - Fully a standard Gentoo compiled and boxed system, cleaned (/etc/portage, ports and /var/db/pkg) are separated as DEV pkg
-  - git included
-  - Boot with dhcp enabled for eth0, *user: root, password: root*
-  - Do you want to change anything? Overmount, from ```/mnt/cdrom/DIRS/DIR_path_your_dir``` and reload services
-  - Think to leave system image untouched..... experiment with mount, ```mount -t tmpfs```, ```mount -o bind``` on *files and dirs*... and jump readonly limits, and automate it with runlevels and [Antd Project](https://github.com/Anthilla/Antd) 
-  - Looks for ```tips.*.tips``` files for summary description in the ```/mnt/cdrom``` structure.
+      - Systemd internal container system;
+      - machinectl to control containers and virtualization through libvirt;
+      - some useful links to virtualize and playing with Systemd containers;
+      - [\#1](http://0pointer.net/blog/systemd-for-administrators-part-xxi.html);
+      - [\#2](https://www.variantweb.net/blog/systemd-machinectl-vs-docker/);
+      - [\#3](http://seanmcgary.com/posts/run-docker-containers-with-systemd-nspawn);
+      - [\#4](http://www.freedesktop.org/software/systemd/man/systemd-nspawn.html);
+      - [\#5](https://coreos.com/docs/launching-containers/launching/getting-started-with-systemd/);
+      - [\#6](https://fedoraproject.org/wiki/Features/SystemdLightweightContainers/);
+      - [\#7](https://lwn.net/Articles/572957/);
+      - [\#8](http://manpages.ubuntu.com/manpages/utopic/man1/machinectl.1.html);
+  - [Docker](https://www.docker.com/); 
+  - [HAProxy](http://www.haproxy.org/);
+  - [Teamd](https://github.com/jpirko/libteam/tree/master/teamd) with some howtos; [\#1](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Configure_teamd_Runners.html) [\#2](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Controlling_teamd_with_teamdctl.html)  
+  - [KVM, Qemu](http://wiki.qemu.org/Main_Page);
+  - [Libvirt](http://libvirt.org/) ;
+  - [Gluster](http://www.gluster.org/); 
+  - [LXC](https://linuxcontainers.org/);
+  - CoreOS [etcd]() & [fleet]();
+  - a lot of high availability and semplified deploying method included and working out of the box;
+  - fully rebuilded and coherent linux system;
+  - <1000 pkg installed, system size: 2.8Gb uncompressed, compressed 647mb;
+  - Grub2 with a simplyfied maintenance;
+  - innovative and particular tools included, filesystems, networking;
+  - latest releases or git versions;
+  - zram and tmpfs usage;
+  - php5.6 and Mono 4.2 included (ready to be an appliance);
+  - fully 64bit System;
+  - fully a standard Gentoo compiled and boxed system, cleaned (/etc/portage, ports and /var/db/pkg) are separated as DEV pkg;
+  - git included;
+  - boot with dhcp enabled for eth0, *user: root, password: root*;
+  - do you want to change anything? Overmount, from ```/mnt/cdrom/DIRS/DIR_path_your_dir``` and reload services;
+  - think to leave system image untouched... experiment with mount, ```mount -t tmpfs```, ```mount -o bind``` on *files and dirs*... and jump readonly limits, and automate it with runlevels and [Antd Project](https://github.com/Anthilla/Antd); 
+  - looks for ```tips.*.tips``` files for summary description in the ```/mnt/cdrom``` structure.
 
 ## Collaborate with us, or make requests, or communicate with us 
 
@@ -162,8 +161,8 @@ contact us in *IRC* on *freenode* channel, *\#anthilla*
 
 ## Change requests to other projects
 
-- [Genkernel Next](https://github.com/Sabayon/genkernel-next),
-- in particular: [Discussion about changing mount point names](https://github.com/Sabayon/genkernel-next/issues/27 write by me,Dorvan)
+- [Genkernel Next](https://github.com/Sabayon/genkernel-next);
+- in particular: [Discussion about changing mount point names](https://github.com/Sabayon/genkernel-next/issues/27 write by me,Dorvan).
 
 ## Voluntary installed (no deps) Package list from World file:
 
