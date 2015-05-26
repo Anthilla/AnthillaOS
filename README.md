@@ -8,15 +8,10 @@ GitHub Repository (because Sourceforge it's too slow!)
 
 AnthillaOS can be used to build structured and/or destructured Clusters in HA and FT
 
+Introduction
+------------
 
-a note. Please, share with us use cases, and configuration, to tune and make AnthillaOS more powerfull and clean.
-Thanks for attention and Enjoy.
-Anthilla OS aims to 
-
-[Anthilla](http://www.anthilla.com) Team
-
-
-be a complete linux system image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real singlof any "System" (System in general sense),
+Anthilla OS aims to be a complete linux system image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real singlof any "System" (System in general sense),
 the drift towards chaos. 
 
 This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal linux system, as custom linux embedded system *readonly* as possible, separing configurations, and Data leaving System image untouched.
@@ -24,8 +19,6 @@ This, simply *Using* and without structural modification or package forks or cus
 custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
 
 System Image, Kernel package, firmwares, Data, and configurations, are separed. like an Android system on a smartphone. But is a pure linux, Based on Gentoo, rebuilded.
-
-AnthillaOS can be used to build structured and/or destructured Clusters in HA and FT
 
 a note. Please, share with us use cases, and configuration, to tune and make AnthillaOS more powerfull and clean.
 
