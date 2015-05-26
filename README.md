@@ -12,10 +12,10 @@ An x86 64bit gentoo image customized for readonly usage as appliances, fully fun
 
 available as VM Image .qed (qemu, xen, kvm, virtualbox), .vmdk (vmware), .vdi (virtualbox) it is ready to be used as vm or to be dumped to and usb key,
 
-### 1- Download it, 
-### 2- Configure the aos_DATE_vhd001.* as first virtual hard disk of a vm,
-### 3- Boot it
-### 4- Log In: user: root, password: root
+1- Download it, 
+2- Configure the aos_DATE_vhd001.* as first virtual hard disk of a vm,
+3- Boot it
+4- Log In: user: root, password: root
 
 If you want mount or look into without booting, take an image file,
 you can mount QED it with qemu-nbd command:
