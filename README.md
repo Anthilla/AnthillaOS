@@ -129,7 +129,7 @@ mount LABEL=BootExt /mountpoint -o rw,noatime,discard
   - [Libvirt](http://libvirt.org/) ;
   - [Gluster](http://www.gluster.org/); 
   - [LXC](https://linuxcontainers.org/);
-  - CoreOS [etcd]() & [fleet]();
+  - [CoreOS](https://coreos.com/) [etcd](https://coreos.com/docs/distributed-configuration/getting-started-with-etcd/) & [fleet](https://coreos.com/using-coreos/clustering/);
   - a lot of high availability and semplified deploying method included and working out of the box;
   - fully rebuilded and coherent linux system;
   - <1000 pkg installed, system size: 2.8Gb uncompressed, compressed 647mb;
