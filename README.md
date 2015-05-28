@@ -101,6 +101,29 @@ blkid #looks /dev/mapper/nbdXp3 BootExt
 mount LABEL=BootExt /mountpoint -o rw,noatime,discard
 ```
 
+Inspiration
+-----------
+We use monolithic images of customized gentoo since 2010, for High Availability installations, in mission critical environment, where a System Incoherence (aka lib64 and compilation flags disalignment inside the binary package or after an update) can rappresent a stability issue.
+
+##Initially inspired by:
+- [System Rescue CD](http://www.sysresccd.org/SystemRescueCd_Homepage)
+- Cisco Ios, as imaged system, with links/copy that points to a loadable config repository
+- [PF Sense](https://www.pfsense.org/) as a good way to produce an appliance
+- [Elektra](http://www.freedesktop.org/wiki/Software/Elektra/) as Configuration Repository
+- [Sabayon](https://www.sabayon.org/)
+- [VM Ware History](http://en.wikipedia.org/wiki/VMware#History)
+
+##And following the natural evolution of I.C.T Scenario with:
+- [CoreOS](https://coreos.com) ...was born from...
+- [ChromeOS](http://en.wikipedia.org/wiki/Chrome_OS#History) ...was born from (following the same building principles of AnthillaOS) ...
+- [Gentoo](https://www.gentoo.org/) The "third tree" of Linux Distros after Debian and RedHat system structure, 
+
+##Our Methods
+- We suggest you experiment with configurations and non-traditional methods to use the system without changing the System image, keeping the minimal boot to last runlevel (to be sure the system has booted) and then start what you want with controlled scripts or applications, following a quote.. "let's try to use a telephone pbx , to handle rail traffic".
+- [SkunkWorks Team methods](http://en.wikipedia.org/wiki/Skunkworks_project)
+- Do you want to change anything? Overmount, from ```/mnt/cdrom/DIRS/DIR_path_your_dir``` and reload services;
+  - think to leave system image untouched... experiment with mount, ```mount -t tmpfs```, ```mount -o bind``` on *files and dirs*... and jump readonly limits, and automate it with runlevels and [Antd Project](https://github.com/Anthilla/Antd); 
+
 ### All Open Source components from other projects are released under respective licenses, all parts, files, subprojects developed as part or this project are released under the BSD 3 clause license.
 
 ## Features
