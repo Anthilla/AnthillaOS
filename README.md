@@ -3,10 +3,11 @@ AnthillaOS
 
 [![Join the chat at https://gitter.im/Anthilla/AnthillaOS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Anthilla/AnthillaOs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-AnthillaOS, Appliance Operating System 
-GitHub Repository (because Sourceforge it's too slow!)
+AnthillaOS, Appliance Operating System </br>
+- [GitHub Repository](https://github.com/Anthilla/AnthillaOS) is for documentation and linking with other projects.
+- [SourceForge Repository](https://sourceforge.net/projects/anthillaos) is for released files of the project.
 
-AnthillaOS can be used to build structured and/or destructured Clusters in HA and FT
+AnthillaOS can be used to build a normal, standalone appliance, </br> or can be used to build structured and/or destructured Clusters in High Availability and Fault Tolerance
 
 Introduction
 ------------
@@ -29,7 +30,7 @@ Thanks for attention and Enjoy.
 Description
 -----------
 
-Usable test/dev exercise for appliances, the drift towards chaos. 
+Usable test/dev exercise for appliances.
 
 This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
 
@@ -37,29 +38,15 @@ Custom application can be added (we suggest, as additional image) on the Boot Vo
 
 System Image, Kernel package, firmwares, Data, and configurations, are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded.
 
-
-An x86 64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of <1000 pkg smashing down a Gentoo distro.
+An x86 64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of \<1000 pkg smashing down a Gentoo distro.
 
 Available as VM Image .qed (qemu, xen, kvm, virtualbox), .vmdk (vmware), .vdi (virtualbox) it is ready to be used as vm or to be dumped to and usb key:
 
-- download it; 
-- configure the aos_DATE_vhd001.* as first virtual hard disk of a vm;
-- boot it;
-- log In with user = root and password = root;
-- access also from network, dhcp on eth0 and sshd are enabled by deafult.
-
-If you want mount or look into without booting, take an image file, you can mount QED it with qemu-nbd command.
-
-<pre><code></pre></code>
-
-*Example:*
-
-```bash
-qemu-nbd --connect=/dev/nbdX aos_DATE_vhd001.qed
-kpartx -a /dev/nbdX
-blkid #looks /dev/mapper/nbdXp3 BootExt
-mount LABEL=BootExt /mountpoint -o rw,noatime,discard
-```
+- Download it; 
+- Configure the "aos_DATE_vhd001.*" as first virtual hard disk of a vm;
+- Boot it;
+- Log In with user: "root" and password: "root";
+- Access also from network, dhcp on eth0 and sshd are enabled by default.
 
 The content of: *aos_DATE_vhd001.qed*
 
@@ -69,7 +56,7 @@ The content of: *aos_DATE_vhd001.qed*
 - DIRS directory it's made to contain your images and directories to Overmount to default one or new one.
     - Please maintain the Syntax: DIR_path + extension (!!!) for example:
         - example 1: ```bash DIR_lib64_firmware.squashfs.xz``` *-Mount On->* ```bash /lib64/firmware``` (part of kernel pkg in Kernel directory, on BootEx).
-        - example 2: ```bash DIR_etc_ssh``` *-Mount Pn->* ```bash /etc/ssh ```.
+        - example 2: ```bash DIR_etc_ssh``` *-Mount On->* ```bash /etc/ssh ```.
 
     - *DIR_* can be the prefix for directories(compressed or uncompressed) and *FILE_* for single files always in _DIRS_ directory on *BootExt*.
 
@@ -90,7 +77,7 @@ mount /mnt/cdrom -o remount,rw,discard,noatime
 
 - You can store on the *BootExt* volume(formatted in ext4 as default) what you need and your experiments in *BootExt* (Mounted On ```bash /mnt/cdrom```) structure:
 
-- ```bash Apps``` : Repository for your Apps wrote in Php, Mono, Go, or any kind of present language/processor available 
+- ```Apps``` : Repository for your Apps wrote in Php, Mono, Go, or any kind of present language/processor available 
 - ```DIRS``` : Repository for Custom *DIRS* and *FILES*, *NOT DATA(s)*
 - ```Kernel``` : Kernel Repository, *a softlink* called ```active-kernel``` and ```active-initrd``` respectively to kernel and initrd define the boot kernel, the same for ```recovery-kernel``` and ```recovery-initrd```
 - ```Overlay``` : Repository for a aufs custom overlay if is needed
@@ -101,6 +88,18 @@ mount /mnt/cdrom -o remount,rw,discard,noatime
 - ```boot``` : link to "." for boot
 - ```grub``` : The home of Grub2! here is the ```grub.cfg```, simplified.
 - ```livecd``` : important empty file to permit the genkernel generated kernel to find the volume to boot
+
+###If you want mount or look into without booting, 
+take an image file, you can mount QED it with qemu-nbd command.
+
+*Example:*
+
+```bash
+qemu-nbd --connect=/dev/nbdX aos_DATE_vhd001.qed
+kpartx -a /dev/nbdX
+blkid #looks /dev/mapper/nbdXp3 BootExt
+mount LABEL=BootExt /mountpoint -o rw,noatime,discard
+```
 
 ### All Open Source components from other projects are released under respective licenses, all parts, files, subprojects developed as part or this project are released under the BSD 3 clause license.
 
