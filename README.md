@@ -12,35 +12,64 @@ AnthillaOS can be used to build a normal, standalone appliance, </br> or can be 
 Introduction
 ------------
 
-Anthilla OS aims to be a complete Linux System image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real singlof any "System" (System in general sense),
-the drift towards chaos. 
+Anthilla OS aims to be a complete Linux System image to serve HA and FT services distributed and replicated (virtualized or not) with a primary focus on bypass the real problem of any "System" (System in general sense),the drift towards chaos. 
 
-This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
+This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux (recompiled *Gentoo*, with *Genkernel* kernel images, like *System Rescue CD*, or *Sabayon*) System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
 
-Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
+Using heavily *Systemd* and looking to *CoreOS* and *Android*, *CyanogenMod*
+Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks *systemd*)
 
-System Image, Kernel package, firmwares, Data, and configurations, are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded.
+- System Image, 
+- Kernel package, 
+- Firmwares, 
+- Data,
+- Configurations, 
 
-A note: please, share with us use cases, and configuration, to tune and make AnthillaOS more powerful and clean.
+are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded with different USE flags looking to *Arch Linux* and *Sabayon*.
+
+the *APPS* can be loaded dinamically making a compressed squash package as "standalone deploy" and simply mounting it in read only, and read/write directories are created and mounted separately in a simply structured filesystem Layout similar to *Android*
+
+We work usually to write *APPS* in dotnet, c# firstly, and run through MONO compiled from latest git tree, and system-coherent, always present in the System Image, we also preparing Apps Templates related to antd project, the system Manager for AnthillaOS
+
+AnthillaOS + antd aims to be a plug and play environment for standalone application, managed by systemd as process.
+
+*A note*: please, share with us use cases, and configuration, to tune and make AnthillaOS more powerful and clean.
 
 Thanks for attention and Enjoy.
 
 [Anthilla](http://www.anthilla.com) Team
 
-Description
+Dnescription
 -----------
 
 Usable test/dev exercise for appliances.
 
-This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
+An x86-64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of near 1200 pkg enclosing Gentoo distro in squash files + boot loader
 
-Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks systemd)
+AnthillaOS project use intensively "mount" command to "overmount" files and directory to *attach* files to the read only system inage, and to make updates easy and non-bloking as possible.
 
-System Image, Kernel package, firmwares, Data, and configurations, are separed, like an Android system on a smartphone. But is a pure Linux, based on Gentoo, rebuilded.
+The system always boot in a known state; 
+then starts an our service through systemd, and mount extended targets (runlevels) to run kernel related Units and application Units
 
-An x86 64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of \<1000 pkg smashing down a Gentoo distro.
+Focusing the work on pure web Apps, it's present a Target level for websockets to integrate services and applications to get they  web-aware
 
-Available as VM Image .qed (qemu, xen, kvm, virtualbox), .vmdk (vmware), .vdi (virtualbox) it is ready to be used as vm or to be dumped to and usb key:
+For Apps we suggest the use of *NancyFX* and *mono*
+about the command available on the system, we refer on linux kernel officially related packages and structures.
+- pseudo filesystems /sys /proc to "speak with the Kernel" on the fly, 
+- iproute2 for the network, 
+- tc for traffic control, 
+- nftables for the firewall
+
+but near 1200 packages are available.
+such as: systemd, bird routing daemon, openvswitch, zfs, qemu(kvm), libvirt, gluster, docker, nginx, php, go-lang ...
+
+some packages like NetworkManager or other are present, but not normally used and their use is discouraged, 
+will be removed in future releases.
+
+any *Apps* who need to work with the *system* have to use a definite *cli command line*, like a operator have to do
+the usage need to be clean as possible, without dependenciecies on system specific libs or system objects, but simply *use* the system. or directly or by systemd units, also for oneshot executions.
+
+Available as VM Image .qed (qemu, xen, kvm, virtualbox) it is ready to be used as vm or to be dumped to and usb key:
 
 - Download it; 
 - Configure the "aos_DATE_vhd001.*" as first virtual hard disk of a vm;
@@ -93,7 +122,6 @@ mount /mnt/cdrom -o remount,rw,discard,noatime
 take an image file, you can mount QED it with qemu-nbd command.
 
 *Example:*
-
 ```bash
 qemu-nbd --connect=/dev/nbdX aos_DATE_vhd001.qed
 kpartx -a /dev/nbdX
@@ -186,464 +214,3 @@ contact us in *IRC* on *freenode* channel, *\#anthilla*
 - [Genkernel Next](https://github.com/Sabayon/genkernel-next);
 - in particular: [Discussion about changing mount point names](https://github.com/Sabayon/genkernel-next/issues/27 write by me,Dorvan).
 
-## Voluntary installed (no deps) Package list from World file:
-
-- app-admin/collectd
-- app-admin/eclean-kernel
-- app-admin/eselect
-- app-admin/fleet
-- app-admin/hardening-check
-- app-admin/hddtemp
-- app-admin/killproc
-- app-admin/lib_users
-- app-admin/localepurge
-- app-admin/logrotate
-- app-admin/mktwpol
-- app-admin/monit
-- app-admin/packagekit
-- app-admin/packagekit-base
-- app-admin/perl-cleaner
-- app-admin/python-updater
-- app-admin/setools
-- app-admin/sudo
-- app-admin/syslog-ng
-- app-admin/sysstat
-- app-admin/tripwire
-- app-admin/ulogd
-- app-antivirus/clamav
-- app-arch/arc
-- app-arch/cabextract
-- app-arch/cpio
-- app-arch/freeze
-- app-arch/lbzip2
-- app-arch/lha
-- app-arch/libarchive
-- app-arch/lrzip
-- app-arch/lz4
-- app-arch/lzlib
-- app-arch/lzma
-- app-arch/lzop
-- app-arch/mscompress
-- app-arch/ncompress
-- app-arch/p7zip
-- app-arch/pax
-- app-arch/plzip
-- app-arch/sharutils
-- app-arch/unarj
-- app-arch/unrar
-- app-arch/unzip
-- app-arch/zip
-- app-arch/zoo
-- app-cdr/cdrtools
-- app-crypt/efitools
-- app-crypt/etcd-ca
-- app-crypt/gnupg
-- app-crypt/gpgme
-- app-crypt/heimdal
-- app-crypt/loop-aes-losetup
-- app-crypt/mcrypt
-- app-crypt/mhash
-- app-crypt/p11-kit
-- app-crypt/pinentry
-- app-crypt/shash
-- app-editors/nano
-- app-editors/vim-core
-- app-emulation/docker
-- app-emulation/docker-compose
-- app-emulation/libvirt
-- app-emulation/lxc
-- app-emulation/qemu
-- app-eselect/eselect-awk
-- app-eselect/eselect-ctags
-- app-eselect/eselect-fontconfig
-- app-eselect/eselect-lib-bin-symlink
-- app-eselect/eselect-notify-send
-- app-eselect/eselect-pinentry
-- app-eselect/eselect-python
-- app-eselect/eselect-sh
-- app-eselect/eselect-timezone
-- app-eselect/eselect-unison
-- app-eselect/eselect-vi
-- app-forensics/lynis
-- app-misc/ca-certificates
-- app-misc/editor-wrapper
-- app-misc/mime-types
-- app-misc/pax-utils
-- app-misc/screen
-- app-misc/scrub
-- app-portage/conf-update
-- app-portage/diffmask
-- app-portage/eix
-- app-portage/flaggie
-- app-portage/gentoolkit
-- app-portage/gentoolkit-dev
-- app-portage/install-mask
-- app-portage/layman
-- app-portage/mirrorselect
-- app-portage/pfl
-- app-portage/portage-utils
-- app-portage/smart-live-rebuild
-- app-portage/ufed
-- app-shells/dash
-- app-shells/fish
-- app-shells/pdmenu
-- app-text/dos2unix
-- dev-db/cdb
-- dev-db/ctdb
-- dev-db/etcd
-- dev-db/libdbi
-- dev-db/libdbi-drivers
-- dev-db/libiodbc
-- dev-db/unixODBC
-- dev-lang/mono
-- dev-lang/php
-- dev-lang/python:2.7
-- dev-libs/cyrus-sasl
-- dev-libs/libev
-- dev-libs/libmemcached
-- dev-libs/libnl
-- dev-libs/nettle
-- dev-libs/npth
-- dev-util/boost-build
-- dev-util/bsdiff
-- dev-util/catalyst
-- dev-util/ccache
-- dev-util/cmake
-- dev-util/cppunit
-- dev-util/ctags
-- dev-util/dialog
-- dev-util/gdbus-codegen
-- dev-util/gperf
-- dev-util/intltool
-- dev-util/makepp
-- dev-util/patchutils
-- dev-util/pkgconfig
-- dev-util/plan9port
-- dev-util/re2c
-- dev-util/systemtap
-- dev-vcs/git
-- dev-vcs/rcs
-- mail-filter/amavisd-milter
-- mail-filter/amavisd-new
-- mail-filter/milter-regex
-- mail-filter/spamass-milter
-- mail-filter/spamassassin
-- mail-mta/postfix
-- media-fonts/dejavu
-- media-fonts/roboto
-- media-libs/harfbuzz
-- media-plugins/alsa-plugins
-- net-analyzer/argus
-- net-analyzer/arping
-- net-analyzer/fail2ban
-- net-analyzer/fping
-- net-analyzer/hping
-- net-analyzer/iftop
-- net-analyzer/iptraf-ng
-- net-analyzer/jnettop
-- net-analyzer/net-snmp
-- net-analyzer/netcat6
-- net-analyzer/netselect
-- net-analyzer/nettop
-- net-analyzer/nfdump
-- net-analyzer/ngrep
-- net-analyzer/nmap
-- net-analyzer/rrdtool
-- net-analyzer/scanlogd
-- net-analyzer/scapy
-- net-analyzer/sflowtool
-- net-analyzer/snort
-- net-analyzer/ssldump
-- net-analyzer/tcpdump
-- net-analyzer/tcpstat
-- net-analyzer/traceroute
-- net-dialup/freeradius
-- net-dialup/linux-atm
-- net-dialup/lrzsz
-- net-dialup/mingetty
-- net-dialup/minicom
-- net-dialup/ppp
-- net-dialup/pptpd
-- net-dialup/rp-pppoe
-- net-dns/avahi
-- net-dns/bind
-- net-dns/bind-tools
-- net-dns/ddclient
-- net-dns/dnsmasq
-- net-dns/hesiod
-- net-dns/idnkit
-- net-dns/libidn
-- net-dns/openresolv
-- net-firewall/conntrack-tools
-- net-firewall/ebtables
-- net-firewall/ipsec-tools
-- net-firewall/iptables
-- net-firewall/nfacct
-- net-firewall/nftables
-- net-firewall/xtables-addons
-- net-fs/netatalk
-- net-fs/nfs-utils
-- net-ftp/atftp
-- net-ftp/ftp
-- net-ftp/ftpbase
-- net-ftp/proftpd
-- net-libs/adns
-- net-libs/c-client
-- net-libs/daq
-- net-libs/gnutls
-- net-libs/libasyncns
-- net-libs/libgsasl
-- net-libs/libgssglue
-- net-libs/libiscsi
-- net-libs/libmicrohttpd
-- net-libs/libmnl
-- net-libs/libnet
-- net-libs/libnetfilter_acct
-- net-libs/libnetfilter_conntrack
-- net-libs/libnetfilter_cthelper
-- net-libs/libnetfilter_cttimeout
-- net-libs/libnetfilter_log
-- net-libs/libnetfilter_queue
-- net-libs/libnfnetlink
-- net-libs/libnfsidmap
-- net-libs/libnftnl
-- net-libs/libnids
-- net-libs/liboping
-- net-libs/libpcap
-- net-libs/libproxy
-- net-libs/librouteros
-- net-libs/librsync
-- net-libs/libssh
-- net-libs/libssh2
-- net-libs/libtirpc
-- net-libs/openslp
-- net-libs/socket_wrapper
-- net-mail/cyrus-imap-admin
-- net-mail/cyrus-imapd
-- net-mail/mailbase
-- net-mail/ripole
-- net-mail/tnef
-- net-misc/bridge-utils
-- net-misc/connman
-- net-misc/curl
-- net-misc/dhcp
-- net-misc/dhcpcd
-- net-misc/dhcpd-pools
-- net-misc/ifenslave
-- net-misc/ipsc
-- net-misc/jwhois
-- net-misc/l7-filter-userspace
-- net-misc/l7-protocols
-- net-misc/memcached
-- net-misc/netctl
-- net-misc/netdate
-- net-misc/netifrc
-- net-misc/netkit-telnetd
-- net-misc/networkmanager
-- net-misc/ntp
-- net-misc/openconnect
-- net-misc/openssh
-- net-misc/openvpn
-- net-misc/quagga
-- net-misc/radvd
-- net-misc/scponly
-- net-misc/socat
-- net-misc/sshpass
-- net-misc/ucarp
-- net-misc/vconfig
-- net-misc/vde
-- net-misc/vpnc
-- net-misc/vpncwatch
-- net-misc/whois
-- net-nds/rpcbind
-- net-nds/tac_plus
-- net-print/cups
-- net-print/cups-filters
-- net-proxy/c-icap
-- net-proxy/dansguardian
-- net-proxy/haproxy
-- net-proxy/squid
-- net-proxy/squidguard
-- net-wireless/chillispot
-- net-wireless/crda
-- net-wireless/hostap-utils
-- net-wireless/hostapd
-- net-wireless/wireless-regdb
-- net-wireless/wireless-tools
-- net-wireless/wpa_supplicant
-- sec-policy/apparmor-profiles
-- sys-apps/acl
-- sys-apps/apparmor
-- sys-apps/apparmor-utils
-- sys-apps/attr
-- sys-apps/checkpolicy
-- sys-apps/cracklib-words
-- sys-apps/dbus
-- sys-apps/debianutils
-- sys-apps/dmapi
-- sys-apps/dmidecode
-- sys-apps/dnotify
-- sys-apps/dtc
-- sys-apps/ed
-- sys-apps/entropy
-- sys-apps/ethtool
-- sys-apps/gentoo-functions
-- sys-apps/gentoo-systemd-integration
-- sys-apps/groff
-- sys-apps/hdparm
-- sys-apps/help2man
-- sys-apps/hwids
-- sys-apps/hwinfo
-- sys-apps/hwloc
-- sys-apps/ipmitool
-- sys-apps/ipmiutil
-- sys-apps/iproute2
-- sys-apps/kexec-tools
-- sys-apps/keyutils
-- sys-apps/kmod
-- sys-apps/lm_sensors
-- sys-apps/lmctfy
-- sys-apps/lsb-release
-- sys-apps/lshw
-- sys-apps/man-db
-- sys-apps/man-pages-posix
-- sys-apps/miscfiles
-- sys-apps/mlocate
-- sys-apps/mtree
-- sys-apps/paludis
-- sys-apps/pciutils
-- sys-apps/portage
-- sys-apps/pv
-- sys-apps/rescan-scsi-bus
-- sys-apps/sandbox
-- sys-apps/sdparm
-- sys-apps/sg3_utils
-- sys-apps/shadow
-- sys-apps/syscriptor
-- sys-apps/systemd
-- sys-apps/sysvinit
-- sys-apps/tcp-wrappers
-- sys-apps/timer_entropyd
-- sys-apps/unscd
-- sys-apps/usbmon
-- sys-apps/usbredir
-- sys-apps/usbutils
-- sys-apps/watchdog
-- sys-apps/xmbmon
-- sys-auth/fprintd
-- sys-auth/libfprint
-- sys-auth/pam_abl
-- sys-auth/pam_fprint
-- sys-auth/pam_krb5
-- sys-auth/pam_passwdqc
-- sys-auth/pam_ssh
-- sys-auth/pambase
-- sys-auth/polkit
-- sys-block/fio
-- sys-block/gpart
-- sys-block/hpacucli
-- sys-block/lio-utils
-- sys-block/mpt-status
-- sys-block/ms-sys
-- sys-block/mtx
-- sys-block/nbd
-- sys-block/open-iscsi
-- sys-block/parted
-- sys-block/raid-check
-- sys-block/targetcli
-- sys-block/tgt
-- sys-block/thin-provisioning-tools
-- sys-block/zram-init
-- sys-boot/efibootmgr
-- sys-boot/gnu-efi
-- sys-boot/grub
-- sys-boot/grub:2
-- sys-boot/lilo
-- sys-boot/syslinux
-- sys-cluster/cluster-glue
-- sys-cluster/corosync
-- sys-cluster/csync2
-- sys-cluster/glusterfs
-- sys-cluster/libcman
-- sys-cluster/openais
-- sys-devel/gcc
-- sys-firmware/ipxe
-- sys-firmware/seabios
-- sys-firmware/sgabios
-- sys-firmware/vgabios
-- sys-fs/btrfs-progs
-- sys-fs/cachefilesd
-- sys-fs/cryptsetup
-- sys-fs/dfc
-- sys-fs/dosfstools
-- sys-fs/ecryptfs-utils
-- sys-fs/encfs
-- sys-fs/etcd-fs
-- sys-fs/exfat-utils
-- sys-fs/extundelete
-- sys-fs/f2fs-tools
-- sys-fs/fuse
-- sys-fs/fuse-zip
-- sys-fs/inotify-tools
-- sys-fs/ldapfuse
-- sys-fs/lessfs
-- sys-fs/libfat
-- sys-fs/lvm2
-- sys-fs/mdadm
-- sys-fs/mtools
-- sys-fs/multipath-tools
-- sys-fs/nilfs-utils
-- sys-fs/ntfs3g
-- sys-fs/ocfs2-tools
-- sys-fs/progsreiserfs
-- sys-fs/quota
-- sys-fs/reiser4progs
-- sys-fs/reiserfs-defrag
-- sys-fs/reiserfsprogs
-- sys-fs/safecopy
-- sys-fs/shake
-- sys-fs/squashfs-tools
-- sys-fs/sshfs-fuse
-- sys-fs/udev-init-scripts
-- sys-fs/udisks
-- sys-fs/xfsprogs
-- sys-fs/zfs
-- sys-fs/zfs-kmod
-- sys-infiniband/libibverbs
-- sys-infiniband/librdmacm
-- sys-kernel/aufs-sources
-- sys-kernel/dracut
-- sys-kernel/genkernel-next
-- sys-kernel/linux-firmware
-- sys-kernel/spl
-- sys-libs/cracklib
-- sys-libs/db
-- sys-libs/e2fsprogs-libs
-- sys-libs/gdbm
-- sys-libs/glibc
-- sys-libs/ldb
-- sys-libs/libstdc++-v3
-- sys-libs/ncurses
-- sys-libs/nss_wrapper
-- sys-libs/ntdb
-- sys-libs/openipmi
-- sys-libs/pam
-- sys-libs/readline
-- sys-libs/slang
-- sys-libs/talloc
-- sys-libs/tdb
-- sys-libs/tevent
-- sys-libs/timezone-data
-- sys-libs/uid_wrapper
-- sys-libs/zlib
-- sys-process/acct
-- sys-process/audit
-- sys-process/cronbase
-- sys-process/fcron
-- sys-process/htop
-- sys-process/lsof
-- sys-process/numactl
-- sys-process/numad
-- virtual/cdrtools
-- virtual/krb5
-- www-servers/nginx
