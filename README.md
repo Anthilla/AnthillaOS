@@ -5,7 +5,6 @@ AnthillaOS
 
 AnthillaOS, Appliance Operating System </br>
 - [GitHub Repository](https://github.com/Anthilla/AnthillaOS) is for documentation and linking with other projects.
-- [SourceForge Repository](https://sourceforge.net/projects/anthillaos) is for released files of the project.
 
 AnthillaOS can be used to build a normal, standalone appliance, </br> or can be used to build structured and/or destructured Clusters in High Availability and Fault Tolerance
 
@@ -16,7 +15,7 @@ Anthilla OS aims to be a complete Linux System image to serve HA and FT services
 
 This, simply *Using* and without structural modification or package forks or custom developments, we want to use a normal Linux (recompiled *Gentoo*, with *Genkernel* kernel images, like *System Rescue CD*, or *Sabayon*) System, as custom Linux embedded System *readonly* as possible, separing configurations, and Data leaving System image untouched.
 
-Using heavily *Systemd* and looking to *CoreOS* and *Android*, *CyanogenMod*
+Using heavily *Systemd* and looking to *CoreOS* and *Android*, *CyanogenMod*, or *Network Appliances*
 Custom application can be added (we suggest, as additional image) on the Boot Volume *BootExt* and loaded at boot with some pluggable runlevel (thanks *systemd*)
 
 - System Image, 
@@ -46,7 +45,7 @@ Usable test/dev exercise for appliances.
 
 An x86-64bit Gentoo image customized for readonly usage as appliances, fully functional and complete of near 1200 pkg enclosing Gentoo distro in squash files + boot loader
 
-AnthillaOS project use intensively "mount" command to "overmount" files and directory to *attach* files to the read only system inage, and to make updates easy and non-bloking as possible.
+AnthillaOS project use intensively "mount" command to "overmount" files and directory (with -o bind option) to *attach* files to the read only system inage, and to make updates easy and non-bloking as possible.
 
 The system always boot in a known state; 
 then starts an our service through systemd, and mount extended targets (runlevels) to run kernel related Units and application Units
@@ -90,14 +89,6 @@ The content of: *aos_DATE_vhd001.qed*
     - *DIR_* can be the prefix for directories(compressed or uncompressed) and *FILE_* for single files always in _DIRS_ directory on *BootExt*.
 
 ## Why is important to maintain this syntax? because we are working to *automate* it!
-
-- *WHEN YOU HAVE* a booted VM with AnthillaOS, you can remount as Read/Write the System Repository. 
-(*BootExt* it's the "Boot Volume" and the "System Repository" mounted in /mnt/cdrom due to default genkernel-* standard)
-simply launching: 
-
-```bash
-mount /mnt/cdrom -o remount,rw,discard,noatime
-```
 
 - Default automated mountpoints by [genkernel-next](https://github.com/Sabayon/genkernel-next) :
     - ```bash /mnt/cdrom``` : *BootExt* Volume: (__"Boot Volume"__ and the __"System Repository"__)
