@@ -38,7 +38,7 @@ Thanks for attention and Enjoy.
 
 [Anthilla](http://www.anthilla.com) Team
 
-Dnescription
+Description
 -----------
 
 Usable test/dev exercise for appliances.
