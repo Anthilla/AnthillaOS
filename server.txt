@@ -1,0 +1,9 @@
+http://srv.anthilla.com/
+http://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+http://ftp.nluug.nl/os/Linux/distr/anthilla/
+http://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+http://ftp.belnet.be/anthilla.com/
+ftp://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+ftp://ftp.nluug.nl/os/Linux/distr/anthilla/
+ftp://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+ftp://ftp.belnet.be/mirror/anthilla.com/
