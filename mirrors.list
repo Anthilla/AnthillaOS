@@ -1,0 +1,22 @@
+_DEV_REPO_HTTP_START_
+http://srv.anthilla.com/
+_DEV_REPO_HTTP_END_
+
+_PROD_REPO_HTTP_START_
+PRH1: http://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+http://ftp.nluug.nl/os/Linux/distr/anthilla/
+http://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+http://ftp.belnet.be/anthilla.com/
+_PROD_REPO_HTTP_END_
+
+_PROD_REPO_FTP_START_
+ftp://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+ftp://ftp.nluug.nl/os/Linux/distr/anthilla/
+ftp://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+ftp://ftp.belnet.be/mirror/anthilla.com/
+_PROD_REPO_FTP_END_
+
+_OLD_REPO_HTTP_START_
+http://ftp.sunet.se/mirror/temp/sf2015/a/an/anthillaos/
+_OLD_REPO_HTTP_END_
+
