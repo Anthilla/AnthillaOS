@@ -120,6 +120,28 @@ blkid #looks /dev/mapper/nbdXp3 BootExt
 mount LABEL=BootExt /mountpoint -o rw,noatime,discard
 ```
 
+Mirrors
+-------
+
+Our development "nightlies" and "unstable release" Repository .
+http://srv.anthilla.com/
+
+Anthilla OS Repository Mirrors:
+Cleaned and niglty replicated in Rsync.
+
+HTTP:
+http://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+http://ftp.nluug.nl/os/Linux/distr/anthilla/
+http://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+http://ftp.belnet.be/anthilla.com/
+
+FTP:
+ftp://ftp.tsukuba.wide.ad.jp/Linux/anthilla/
+ftp://ftp.nluug.nl/os/Linux/distr/anthilla/
+ftp://ftp.cc.uoc.gr/mirrors/linux/anthilla/
+ftp://ftp.belnet.be/mirror/anthilla.com/
+
+
 Inspiration
 -----------
 We use monolithic images of customized gentoo since 2010, for High Availability installations, in mission critical environment, where a System Incoherence (aka lib64 and compilation flags disalignment inside the binary package or after an update) can rappresent a stability issue.
