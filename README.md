@@ -172,8 +172,8 @@ We use monolithic images of customized gentoo since 2010, for High Availability 
   - Squash xz compressed (so read only) booting image;
   - Build to run with [Antd](www.anthilla.com/en/projects/antd/) [Antd on Github](https://github.com/Anthilla/Antd) 
   - [ZFS](http://zfsonlinux.org/) a part of [OpenZFS project](http://open-zfs.org/wiki/Main_Page);
-  - Samba [Samba Gentoo ebuild](https://packages.gentoo.org/package/net-fs/samba) (REMOVED! Due instability and problem to automate the build of official and overlay pkg for both 4.1.x and 4.2.x), Dockerize or Lxc It;
-  - Linux Kernel 4.0.0 aufs from gentoo sources with powerful configuration (most builtin);
+  - Samba [Samba Gentoo ebuild](https://packages.gentoo.org/package/net-fs/samba) 
+  - Linux Kernel 4.4.16 aufs from gentoo sources with powerful configuration (most builtin);
   - [Systemd](http://www.freedesktop.org/wiki/Software/systemd/) with minimal set of services, plus a set of custom runlevel that permits to load external defined services during boot (from git master) with a lot of features including:
       - Systemd internal container system;
       - machinectl to control containers and virtualization through libvirt;
