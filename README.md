@@ -154,12 +154,12 @@ We use monolithic images of customized gentoo since 2010, for High Availability 
 - [Sabayon](https://www.sabayon.org/)
 - [VM Ware History](http://en.wikipedia.org/wiki/VMware#History)
 
-##And following the natural evolution of I.C.T Scenario with:
+## And following the natural evolution of I.C.T Scenario with:
 - [CoreOS](https://coreos.com) ...was born from...
 - [ChromeOS](http://en.wikipedia.org/wiki/Chrome_OS#History) ...was born from (following the same building principles of AnthillaOS) ...
 - [Gentoo](https://www.gentoo.org/) The "third tree" of Linux Distros after Debian and RedHat system structure, 
 
-##Our Methods
+## Our Methods
 - We suggest you experiment with configurations and non-traditional methods to use the system without changing the System image, keeping the minimal boot to last runlevel (to be sure the system has booted) and then start what you want with controlled scripts or applications, following a quote.. "let's try to use a telephone pbx , to handle rail traffic".
 - [SkunkWorks Team methods](http://en.wikipedia.org/wiki/Skunkworks_project)
 - Do you want to change anything? Overmount, from ```/mnt/cdrom/DIRS/DIR_path_your_dir``` and reload services;
@@ -173,7 +173,7 @@ We use monolithic images of customized gentoo since 2010, for High Availability 
   - Build to run with [Antd](www.anthilla.com/en/projects/antd/) [Antd on Github](https://github.com/Anthilla/Antd) 
   - [ZFS](http://zfsonlinux.org/) a part of [OpenZFS project](http://open-zfs.org/wiki/Main_Page);
   - Samba [Samba Gentoo ebuild](https://packages.gentoo.org/package/net-fs/samba) 
-  - Linux Kernel 4.4.16 aufs from gentoo sources with powerful configuration (most builtin);
+  - Linux Kernel Latest Long Term aufs from gentoo sources with powerful configuration (most builtin);
   - [Systemd](http://www.freedesktop.org/wiki/Software/systemd/) with minimal set of services, plus a set of custom runlevel that permits to load external defined services during boot (from git master) with a lot of features including:
       - Systemd internal container system;
       - machinectl to control containers and virtualization through libvirt;
